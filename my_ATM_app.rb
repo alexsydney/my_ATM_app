@@ -21,40 +21,49 @@ getPin = gets.chomp.to_i
 
 correctPin = 88888
 balanceAmount = 20000
-if (correctPin == getPin)
-  puts "You login account at : #{Time.now.strftime("%d/%m/%Y %H:%M")}"
-  #mainMemu late on
-  puts "Please select option: "
-  puts " 1   withdraw money from your bank account"
-  puts " 2   deposit money into your bank account"
-  puts " 3   check balance from your bank account"
-  puts " 8   logout bank account"
-  getOption = gets.chomp.to_i
-  more = true
-    while more == true
-          case getOption
-          when 1  # withdraw option
-            puts "enter amount want to withdraw :"
-            withdrawAmount = gets.chomp.to_f
-            puts "Amount you like to withdraw: #{withdrawAmount} at #{Time.now.strftime("%d/%m/%Y %H:%M")}"
-          when 2 # withdraw option
-            puts "enter amount want to deposit:"
-            depositAmount = gets.chomp.to_f
-            puts "Amount you want to deposit at ATM : #{depositAmount} on #{Time.now.strftime("%d/%m/%Y %H:%M")}"
-          when 3  # balance option
-            # puts depositAmount
-            # newBalanceAmount = balanceAmount + depositAmount - withdrawAmount
-            puts "Your bank account balance is : $#{balanceAmount}"
-          #when 4  # select account type option
-          #when 5  # cardless cash option
-          #when 6  # language option
-        when 8 # logout bank account
-           puts "You logout ATM at #{Time.now.strftime("%d/%m/%Y %H:%M")}"
-           break
+
+        if (correctPin == getPin)
+          puts "You login account at : #{Time.now.strftime("%d/%m/%Y %H:%M")}"
+          #mainMemu late on
+          puts "Please select option: "
+          puts " 1   withdraw money from your bank account"
+          puts " 2   deposit money into your bank account"
+          puts " 3   check balance from your bank account"
+          puts " 8   logout bank account"
+          getOption = gets.chomp.to_i
+          #getAnswer = ' '
+            while (getAnswer != "y" && getAnswer != " ")
+              case getOption
+                  when 1  # withdraw option
+                    puts "enter amount want to withdraw :"
+                    withdrawAmount = gets.chomp.to_f
+                    puts "You withdraw $ #{withdrawAmount} at #{Time.now.strftime("%d/%m/%Y %H:%M")}"
+                  when 2 # withdraw option
+                    puts "enter amount want to deposit:"
+                    depositAmount = gets.chomp.to_f
+                    puts "You want to deposit $ : #{depositAmount} at #{Time.now.strftime("%d/%m/%Y %H:%M")}"
+                  when 3  # balance option
+                    # puts depositAmount
+                    # newBalanceAmount = balanceAmount + depositAmount - withdrawAmount
+                    puts "Your bank account balance is : $#{balanceAmount}"
+                  #when 4  # select account type option
+                  #when 5  # cardless cash option
+                  #when 6  # language option
+                 when 8 # logout bank account
+                   puts "You logout ATM at #{Time.now.strftime("%d/%m/%Y %H:%M")}"
+                   break
+               end
+               puts "Do you want to continue to login y/n"
+               getAnswer = gets.chomp.to_s
+               if (getAnswer == "n" || getAnswer = " ")
+                 puts "Thank you for using our ATM and have a nice day."
+                 break
+               end
+            end
+        else
+            puts "Please enter correct pin number please try again."
         end
-    end
-else
-  puts "Please enter correct pin again to access to your bank accoiunt."
-end
+
+
 
 #puts "PIN number #{getPin}"
